@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Interactive Signup Form</title>
+
+<style>
+
+body{
+    font-family: 'Segoe UI', sans-serif;
+    background: linear-gradient(120deg,#2563eb,#60a5fa);
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.container{
+    background:white;
+    padding:35px;
+    width:380px;
+    border-radius:12px;
+    box-shadow:0 15px 35px rgba(0,0,0,0.2);
+}
+
+h2{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.input-group{
+    margin-bottom:15px;
+}
+
+input{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    font-size:14px;
+}
+
+input:focus{
+    outline:none;
+    border-color:#2563eb;
+}
+
+.error{
+    color:red;
+    font-size:13px;
+}
+
+.success{
+    color:green;
+    font-size:14px;
+    text-align:center;
+    margin-top:10px;
+}
+
+.strength{
+    font-size:12px;
+    margin-top:5px;
+}
+
+button{
+    width:100%;
+    padding:12px;
+    background:#2563eb;
+    color:white;
+    border:none;
+    border-radius:6px;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#1e40af;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>Create Account</h2>
+
+<form id="signupForm">
+
+<div class="input-group">
+<input type="text" id="name" placeholder="Full Name">
+<div id="nameError" class="error"></div>
+</div>
+
+<div class="input-group">
+<input type="email" id="email" placeholder="Email Address">
+<div id="emailError" class="error"></div>
+</div>
+
+<div class="input-group">
+<input type="password" id="password" placeholder="Password">
+<div id="passwordStrength" class="strength"></div>
+</div>
+
+<button type="submit">Sign Up</button>
+
+<div id="successMessage" class="success"></div>
+
+</form>
+
+</div>
+
+<script>
+
+const nameInput = document.getElementById("name");
+const emailInput = document.getElementById("email");
+const passwordInput = document.getElementById("password");
+
+nameInput.addEventListener("input", function(){
+    if(nameInput.value.length < 3){
+        document.getElementById("nameError").innerText = "Name must be at least 3 characters";
+    }else{
+        document.getElementById("nameError").innerText = "";
+    }
+});
+
+emailInput.addEventListener("input", function(){
+
+let emailPattern = /^[^ ]+@[^ ]+\.[a-z]{2,3}$/;
+
+if(!emailInput.value.match(emailPattern)){
+    document.getElementById("emailError").innerText = "Enter a valid email";
+}else{
+    document.getElementById("emailError").innerText = "";
+}
+
+});
+
+passwordInput.addEventListener("input", function(){
+
+let password = passwordInput.value;
+let strengthText = document.getElementById("passwordStrength");
+
+if(password.length < 6){
+    strengthText.style.color="red";
+    strengthText.innerText="Weak password";
+}
+else if(password.length < 10){
+    strengthText.style.color="orange";
+    strengthText.innerText="Medium password";
+}
+else{
+    strengthText.style.color="green";
+    strengthText.innerText="Strong password";
+}
+
+});
+
+document.getElementById("signupForm").addEventListener("submit", function(e){
+
+e.preventDefault();
+
+if(
+nameInput.value.length >=3 &&
+emailInput.value !== "" &&
+passwordInput.value.length >=6
+){
+document.getElementById("successMessage").innerText="Registration Successful!";
+}
+
+});
+
+</script>
+
+</body>
+</html>
