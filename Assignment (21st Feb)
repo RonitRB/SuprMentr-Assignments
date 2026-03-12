@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Ronit Bongale - AI & Web Developer</title>
+
+<!-- Optional: swap or add a Google Font if you want -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    --bg-1: #0f172a;
+    --accent: #2563eb;
+    --accent-2: #60a5fa;
+    --muted: #94a3b8;
+    --card-bg: #ffffff;
+    --glass: rgba(255,255,255,0.06);
+    --radius: 14px;
+    --maxw: 1100px;
+    --gap: 28px;
+    --ease: cubic-bezier(.2,.9,.2,1);
+    font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    color-scheme: light;
+  }
+
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    background: linear-gradient(180deg,#eef8ff 0%, #ffffff 40%);
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale;
+    color: #0b1220;
+    line-height:1.45;
+  }
+
+  .site{
+    max-width:var(--maxw);
+    margin:40px auto;
+    padding:30px;
+  }
+
+  /* NAV */
+  .nav{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    margin-bottom:var(--gap);
+  }
+  .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit}
+  .logo{
+    width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent-2));
+    display:inline-grid;place-items:center;color:white;font-weight:700;
+    box-shadow:0 6px 20px rgba(37,99,235,0.18);
+  }
+  .navlinks{
+    display:flex;
+    gap:18px;
+    align-items:center;
+  }
+  .navlinks a{
+    color:var(--muted);text-decoration:none;font-weight:600;font-size:14px;padding:8px 10px;border-radius:8px;
+  }
+  .navlinks a:hover{color:var(--accent);background:transparent}
+  .cta-nav{
+    background:var(--accent);color:white;padding:10px 14px;border-radius:10px;text-decoration:none;font-weight:600;
+    box-shadow:0 6px 20px rgba(37,99,235,0.14);
+  }
+  .cta-nav:hover{transform:translateY(-2px);transition:transform .18s var(--ease)}
+
+  /* HERO */
+  .hero{
+    display:grid;
+    grid-template-columns: 1fr 520px;
+    gap:var(--gap);
+    align-items:center;
+  }
+
+  .hero-left{
+    padding-right:8px;
+  }
+
+  h1{
+    font-size: clamp(28px, 4.2vw, 44px);
+    margin:0 0 12px 0;
+    line-height:1.02;
+    letter-spacing:-0.02em;
+    color:#08132b;
+    font-weight:700;
+  }
+
+  .eyebrow{
+    display:inline-block;margin-bottom:12px;padding:6px 10px;border-radius:999px;
+    background:linear-gradient(90deg, rgba(37,99,235,0.12), rgba(96,165,250,0.08));
+    color:var(--accent);
+    font-weight:600;font-size:13px;
+  }
+
+  p.lead{
+    color:var(--muted);
+    margin:0 0 18px 0;
+    font-size:16px;
+    max-width:54ch;
+  }
+
+  .buttons{
+    display:flex;gap:12px;flex-wrap:wrap;margin-top:8px;
+  }
+
+  .btn{
+    display:inline-flex;align-items:center;gap:10px;
+    padding:12px 18px;border-radius:12px;text-decoration:none;font-weight:700;
+    border:0;cursor:pointer;
+  }
+  .btn-primary{
+    background:linear-gradient(90deg,var(--accent),var(--accent-2));
+    color:white;box-shadow:0 10px 30px rgba(37,99,235,0.18);
+  }
+  .btn-ghost{
+    background:transparent;color:var(--accent);border:2px solid rgba(37,99,235,0.08);
+  }
+  .btn-primary:hover{transform:translateY(-4px);transition:transform .18s var(--ease)}
+  .btn-ghost:hover{background:rgba(37,99,235,0.04)}
+
+  /* trust / skills row */
+  .trust{
+    display:flex;gap:18px;align-items:center;margin-top:22px;flex-wrap:wrap;
+  }
+  .skill-pill{
+    background:rgba(15,23,42,0.04);padding:8px 12px;border-radius:999px;font-weight:600;color:#0b1220;font-size:13px;
+    border:1px solid rgba(11,18,32,0.04);
+  }
+
+  /* HERO card (illustration/visual) */
+  .hero-card{
+    background: linear-gradient(180deg,#ffffff, #f8fbff);
+    border-radius:var(--radius);
+    padding:22px;
+    box-shadow: 0 20px 50px rgba(14,30,50,0.08);
+    display:flex;
+    gap:18px;
+    align-items:center;
+    transform: translateY(0);
+    transition: transform .28s var(--ease);
+  }
+  .hero-card:hover{transform: translateY(-6px)}
+  .device{
+    width:180px;height:120px;border-radius:10px;background:linear-gradient(135deg,#f8fafc,#eef6ff);
+    display:grid;place-items:center;box-shadow:0 8px 20px rgba(16,24,40,0.06);
+    flex-shrink:0;
+    position:relative;overflow:hidden;
+  }
+  .device .screen{
+    width:85%;height:72%;background:linear-gradient(180deg,#fff,#f1f8ff);
+    border-radius:8px;display:grid;place-items:center;font-weight:700;color:var(--accent);
+  }
+  .hero-art{
+    flex:1;
+  }
+  .hero-art h3{margin:0 0 6px 0;font-size:16px;color:#0b1220}
+  .hero-art p{margin:0;color:var(--muted);font-size:14px}
+
+  /* responsive */
+  @media (max-width:1024px){
+    .hero{grid-template-columns: 1fr 420px}
+    .site{padding:20px}
+  }
+
+  @media (max-width:720px){
+    .navlinks{display:none} /* simple mobile behavior */
+    .hero{grid-template-columns:1fr;gap:20px}
+    .hero-card{flex-direction:row;align-items:center}
+    .device{width:140px;height:96px}
+  }
+
+  /* Small, pleasant focus styles */
+  a:focus, button:focus{outline:3px solid rgba(37,99,235,0.12);outline-offset:3px;border-radius:8px}
+
+  /* subtle float animation for device */
+  @keyframes floaty {
+    0%{transform:translateY(0)}
+    50%{transform:translateY(-8px)}
+    100%{transform:translateY(0)}
+  }
+  .device{animation: floaty 6s ease-in-out infinite}
+</style>
+</head>
+<body>
+
+  <main class="site" role="main">
+
+    <nav class="nav" aria-label="Main navigation">
+      <a class="brand" href="#" aria-label="Homepage">
+        <span class="logo" aria-hidden="true">RB</span>
+        <span style="font-weight:700">Ronit Bongale</span>
+      </a>
+
+      <div class="navlinks" aria-hidden="true">
+        <a href="#about">About</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <a class="cta-nav" href="https://github.com/RonitRB" target="_blank" rel="noopener">View GitHub</a>
+    </nav>
+
+    <section class="hero" aria-labelledby="hero-heading">
+
+      <div class="hero-left">
+        <div class="eyebrow" aria-hidden="true">Student • AI & Web</div>
+
+        <h1 id="hero-heading">
+          Hi! <br>
+          I’m <span style="color:var(--accent)">Ronit Bongale</span><br>
+          Building AI-driven web projects.
+        </h1>
+
+        <p class="lead">
+          I build web apps and prototypes combining Python, machine learning, and modern frontend tech. I’m
+          focused on practical projects that solve accessibility and finance problems.
+        </p>
+
+        <div class="buttons" role="group" aria-label="Primary actions">
+          <a class="btn btn-primary" href="https://github.com/RonitRB?tab=repositories" target="_blank" rel="noopener">
+            View Projects
+          </a>
+          <a class="btn btn-ghost" href="https://www.linkedin.com/in/ronit-bongale/">Get in touch</a>
+        </div>
+
+        <div class="trust" aria-hidden="false">
+          <span class="skill-pill">Python</span>
+          <span class="skill-pill">Flask</span>
+          <span class="skill-pill">OpenCV</span>
+          <span class="skill-pill">Machine Learning</span>
+        </div>
+      </div>
+
+      <aside class="hero-card" aria-label="Illustration and highlights">
+        <div class="device" aria-hidden="true">
+          <div class="screen">Demo</div>
+        </div>
+
+        <div class="hero-art">
+          <h3>Featured project</h3>
+          <p>Assistive Technology — OCR + TTS prototype that improves accessibility for printed and handwritten text.</p>
+        </div>
+      </aside>
+
+    </section>
+
+  </main>
+
+</body>
+</html>
