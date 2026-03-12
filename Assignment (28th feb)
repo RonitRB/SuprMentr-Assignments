@@ -1,0 +1,31 @@
+let students = [
+    {
+        name: "Rahul",
+        marks: [80, 75, 90]
+    },
+    {
+        name: "Anita",
+        marks: [85, 88, 92]
+    },
+    {
+        name: "Kiran",
+        marks: [70, 65, 78]
+    }
+];
+
+students.forEach(function(student){
+
+    let total = 0;
+
+    student.marks.forEach(function(mark){
+        total += mark;
+    });
+
+    let average = total / student.marks.length;
+
+    console.log("Student:", student.name);
+    console.log("Total Marks:", total);
+    console.log("Average Marks:", average);
+    console.log("-------------------------");
+
+});
