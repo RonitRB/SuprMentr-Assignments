@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Product Listing</title>
+
+<style>
+body{
+    font-family:Arial;
+    background:#f4f4f4;
+}
+
+.container{
+    width:90%;
+    margin:auto;
+}
+
+h1{
+    text-align:center;
+}
+
+.filters{
+    text-align:center;
+    margin:20px;
+}
+
+button{
+    margin:5px;
+    padding:10px;
+    background:#2563eb;
+    color:white;
+    border:none;
+}
+
+.products{
+    display:flex;
+    flex-wrap:wrap;
+    gap:20px;
+}
+
+.card{
+    background:white;
+    padding:15px;
+    width:200px;
+    border-radius:8px;
+    text-align:center;
+}
+
+img{
+    width:100%;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>Product Store</h1>
+
+<div class="filters">
+<button onclick="filterProducts('all')">All</button>
+<button onclick="filterProducts('electronics')">Electronics</button>
+<button onclick="filterProducts('clothing')">Clothing</button>
+</div>
+
+<div id="products" class="products"></div>
+
+</div>
+
+<script>
+
+let items=[
+{ name:"Phone", category:"electronics", price:200, img:"https://via.placeholder.com/150" },
+{ name:"Laptop", category:"electronics", price:800, img:"https://via.placeholder.com/150" },
+{ name:"Shirt", category:"clothing", price:30, img:"https://via.placeholder.com/150" },
+{ name:"Jeans", category:"clothing", price:50, img:"https://via.placeholder.com/150" }
+];
+
+function displayProducts(list){
+    let html="";
+    list.forEach(item=>{
+        html+=`
+        <div class="card">
+            <img src="${item.img}">
+            <h3>${item.name}</h3>
+            <p>$${item.price}</p>
+        </div>
+        `;
+    });
+    document.getElementById("products").innerHTML=html;
+}
+
+function filterProducts(category){
+    if(category==="all"){
+        displayProducts(items);
+    }else{
+        displayProducts(items.filter(i=>i.category===category));
+    }
+}
+
+displayProducts(items);
+
+</script>
+
+</body>
+</html>
