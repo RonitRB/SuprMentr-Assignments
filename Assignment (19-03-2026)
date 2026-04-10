@@ -1,0 +1,9 @@
+project/
+ ├── src/
+ │    ├── components/
+ │    ├── pages/
+ │    ├── styles/
+ │    ├── assets/
+ │    └── App.js
+ ├── public/
+ └── package.json
